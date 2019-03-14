@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>登录页</title>
+</head>
+<body>
+<h1>登录页</h1>
+<div name="message" style="color:red">
+  {% if message %}  {# 后端传入的值，可以直接通过key键取值 渲染 #}
+    <!-- 错误信息 -->
+  {{ message }}
+  {% endif %}
+</div>
+{# /login/ 在当前域名上跳转 #}
+<form action="/login/" method="POST">
+  {% csrf_token %}  {# csrf是游览器存一份，本地存一份，要对应才能请求，否则会报403 #}
+  <lable>用户名：</lable>
+  <input type="text" name="username" placeholder="请输入用户名">
+  <lable>密码：</lable>
+  <input type="password" name="password" placeholder="请输入密码">
+  <input type="submit" value="提交">  {# value的值是登录按钮上的字 #}
+</form>
+</body>
+</html>

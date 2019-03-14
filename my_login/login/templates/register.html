@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>注册页</title>
+</head>
+<body>
+<h1>注册页</h1>
+
+<!-- 错误提示 -->
+<div name="message" style="color:red;">
+  {% if message %}  {# 后端传入的值，可以直接通过key键取值 渲染 #}
+  {{ message }}
+  {% endif %}
+</div>
+<form action="/register/" method="post">
+  {% csrf_token %}
+  <label for="">用户名：</label>
+  <input type="text" name="username" placeholder="用户名1-20个字，中英文或-" required="required"><br>
+  <label for="">密码：</label>
+  <input type="password" name="password" placeholder="请输入密码 20字以下" required="required"><br>
+  <label for="">邮箱：</label>
+  <input type="email" name="email" placeholder="请输入邮箱" required="required"><br>
+  <input type="submit" value="确定注册">
+</form>
+</body>
+</html>

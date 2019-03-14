@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>首页</title>
+</head>
+<body>
+<h1>首页</h1>
+<div name="nav">
+  <ul>
+    <li>首页</li>
+    <li>活动</li>
+    <li>关于公司</li>
+    <li>公司后台</li>
+    {% if request.session.is_login %}
+    <a><li>我的</li></a>
+      <li>欢迎，{{ request.session.username }}</li>
+      <a href="/logout/">登出</a>
+      {% else %}
+      <a href="/login/">去登录</a>
+      <a href="/register/">去注册</a>
+    {% endif %}
+  </ul>
+</div>
+</body>
+</html>
